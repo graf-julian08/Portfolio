@@ -1,13 +1,20 @@
-# Developer Portfolio
+# Personal Developer Portfolio
 
-Persoenliche Web-Portfolio Seite zur Praesentation von Projekten und Skills.
+## Übersicht
+Dieses Repository beinhaltet eine schlanke Web-Portfolio-Seite zur Präsentation von Softwareprojekten, Qualifikationen und Kontaktdaten.
 
-## Funktionalitaeten
-- Uebersichtlicher Code und strukturierte Aufteilung der Komponenten.
-- Einfache Integration und Anpassung an bestehende Systeme.
+## Projektstruktur & Architektur
+- `index.html`: Semantisches HTML5-Grundgerüst der Webseite.
+- `style.css`: Modernes CSS-Styling mit responsivem Layout für Mobil- und Desktopgeräte.
+- `script.js`: Leichtgewichtige JavaScript-Logik für Navigation und Effekte.
 
-## Nutzung
-Oeffne `index.html` direkt im Browser.
+## Hauptfunktionalitäten
+- **Hohe Performance**: Direkte Ausführung im Browser ohne Framework-Overhead.
+- **Responsives Design**: Optimierte Darstellung auf allen Bildschirmgrössen.
+- **Projektpräsentation**: Übersichtliche Darstellung von Entwicklungsreferenzen.
+
+## Ausführung & Nutzung
+Die Datei `index.html` kann direkt in jedem modernen Webbrowser geöffnet werden.
 
 ## Lizenz
 Dieses Projekt steht unter der MIT-Lizenz.
