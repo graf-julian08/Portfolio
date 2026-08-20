@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julian Graf | Creative Developer</title>
+
+    <!-- Fonts: Inter for UI, Space Grotesk for Headers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0a0a0a',
+                        'text-primary': '#ffffff',
+                        'text-secondary': '#888888',
+                        'accent': '#ffffff', // Minimalist white accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-bg-dark text-text-primary overflow-x-hidden cursor-none selection:bg-white selection:text-black">
+
+    <!-- Paint Canvas Layer (Behind content but interactive logic handles z-index virtually) -->
+    <canvas id="paintCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- UI Layer -->
+    <div class="relative z-10">
+
+        <!-- Minimalist Header -->
+        <nav class="fixed top-0 w-full px-8 py-8 flex justify-between items-center mix-blend-difference z-50">
+            <a href="#" class="font-display font-bold text-xl tracking-tighter">JULIAN GRAF</a>
+
+            <button id="menu-toggle" class="group flex flex-col gap-1.5 w-8 hover:gap-2 transition-all duration-300">
+                <span class="w-full h-[2px] bg-white transition-all group-hover:bg-gray-300"></span>
+                <span
+                    class="w-full h-[2px] bg-white transition-all group-hover:bg-gray-300 group-hover:w-2/3 ml-auto"></span>
+            </button>
+        </nav>
+
+        <!-- Fullscreen Menu Overlay -->
+        <div id="fullscreen-menu"
+            class="fixed inset-0 bg-bg-dark z-40 transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] flex flex-col justify-center items-center">
+            <div class="flex flex-col gap-8 text-center">
+                <a href="#about"
+                    class="menu-link font-display text-5xl md:text-7xl font-bold hover:text-gray-400 transition-colors">About</a>
+                <a href="#skills"
+                    class="menu-link font-display text-5xl md:text-7xl font-bold hover:text-gray-400 transition-colors">Skills</a>
+                <a href="#projects"
+                    class="menu-link font-display text-5xl md:text-7xl font-bold hover:text-gray-400 transition-colors">Work</a>
+                <a href="#contact"
+                    class="menu-link font-display text-5xl md:text-7xl font-bold hover:text-gray-400 transition-colors">Contact</a>
+            </div>
+            <button id="menu-close"
+                class="absolute top-8 right-8 text-2xl hover:rotate-90 transition-transform duration-300">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Hero Section -->
+        <header class="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-20">
+            <p class="font-sans text-text-primary text-sm tracking-[0.2em] mb-8 fade-in">CREATIVE DEVELOPER</p>
+            <h1
+                class="font-display text-6xl md:text-8xl lg:text-[9rem] font-bold leading-[0.9] tracking-tighter mb-12 fade-in delay-100">
+                CRAFTING <br>
+                DIGITAL <br>
+                INTELLIGENCE
+            </h1>
+            <div
+                class="flex flex-col md:flex-row gap-8 md:items-end justify-between border-t border-white/20 pt-8 fade-in delay-200">
+                <p class="max-w-md text-text-secondary text-lg leading-relaxed">
+                    Student at IMS St. Gallen. <br>
+                    Specializing in AI, Cybersecurity & Minimalist Web Design.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#about" class="text-sm border-b border-white pb-1 hover:pb-2 transition-all">DISCOVER</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 px-8 md:px-24 border-t border-white/5">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <span class="text-text-secondary text-sm font-mono">(01) ABOUT</span>
+                </div>
+                <div class="md:col-span-8">
+                    <h2 class="font-display text-4xl md:text-5xl font-medium leading-tight mb-12">
+                        I combine rigid logic with free-flowing creativity to build secure, intelligent systems.
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <p class="text-text-secondary leading-relaxed mb-6">
+                                Currently studying Computer Science at Kantonsschule am Brühl. My mission is to bridge
+                                the gap between complex backend technologies (AWS, AI) and seamless frontend
+                                experiences.
+                            </p>
+                            <p class="text-text-secondary leading-relaxed">
+                                I don't just write code; I design solutions that are efficient, scalable, and visually
+                                quiet.
+                            </p>
+                        </div>
+                        <ul class="space-y-4 font-display text-xl">
+                            <li class="border-b border-white/10 pb-2">St. Gallen, Switzerland</li>
+                            <li class="border-b border-white/10 pb-2">IMS Student</li>
+                            <li class="border-b border-white/10 pb-2">Future AI Specialist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-32 px-8 md:px-24 border-t border-white/5 bg-[#0e0e0e]">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <span class="text-text-secondary text-sm font-mono">(02) ARSENAL</span>
+                </div>
+                <div class="md:col-span-8">
+                    <div class="grid grid-cols-2 gap-x-12 gap-y-16">
+                        <!-- Skill Group -->
+                        <div>
+                            <h3 class="font-display text-2xl mb-6">Core Tech</h3>
+                            <ul class="space-y-3 text-text-secondary font-sans text-lg">
+                                <li>Python & C#</li>
+                                <li>TypeScript / Angular</li>
+                                <li>HTML5 / SCSS</li>
+                                <li>SQL / NoSQL</li>
+                            </ul>
+                        </div>
+
+                        <!-- Skill Group -->
+                        <div>
+                            <h3 class="font-display text-2xl mb-6">Infrastructure</h3>
+                            <ul class="space-y-3 text-text-secondary font-sans text-lg">
+                                <li>AWS Cloud</li>
+                                <li>Data Pipelines</li>
+                                <li>Docker / CI/CD</li>
+                                <li>Cybersecurity Basics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-32 px-8 md:px-24 border-t border-white/5">
+            <div class="flex justify-between items-baseline mb-20">
+                <span class="text-text-secondary text-sm font-mono">(03) SELECTED WORK</span>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Import Placeholder -->
+                <div class="border border-white/10 p-12 text-center hover:bg-white/5 transition-colors">
+                    <h3 class="font-display text-3xl mb-4">Import from juliangraf.ch</h3>
+                    <p class="text-text-secondary mb-8">This section is reserved for importing projects from the
+                        previous portfolio.</p>
+                </div>
+
+                <!-- Project 1 -->
+                <div class="group cursor-none">
+                    <div class="w-full aspect-[16/9] bg-gray-900 overflow-hidden mb-8 relative">
+                        <!-- Image Placeholder -->
+                        <img src="https://images.unsplash.com/photo-1482686119171-d82e7b704d73?q=80&w=2070&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                            alt="Project">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-4xl font-bold mb-2">Secure Pipeline</h3>
+                            <p class="text-text-secondary">AWS / Data Engineering</p>
+                        </div>
+                        <span
+                            class="px-4 py-2 border border-white/20 rounded-full text-sm hover:bg-white hover:text-black transition-colors">2024</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group cursor-none">
+                    <div class="w-full aspect-[16/9] bg-gray-900 overflow-hidden mb-8 relative">
+                        <!-- Image Placeholder -->
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                            alt="Project">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-4xl font-bold mb-2">Neural Net Viz</h3>
+                            <p class="text-text-secondary">AI / Python</p>
+                        </div>
+                        <span
+                            class="px-4 py-2 border border-white/20 rounded-full text-sm hover:bg-white hover:text-black transition-colors">2023</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education / Timeline -->
+        <section id="education" class="py-32 px-8 md:px-24 border-t border-white/5">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4">
+                    <span class="text-text-secondary text-sm font-mono">(04) JOURNEY</span>
+                </div>
+                <div class="md:col-span-8 space-y-12">
+                    <div class="flex gap-8 group">
+                        <span class="text-text-secondary w-32 shrink-0">Now</span>
+                        <div>
+                            <h4 class="font-display text-2xl">Kantonsschule am Brühl</h4>
+                            <p class="text-text-secondary">Informatikmittelschule (IMS)</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 group">
+                        <span class="text-text-secondary w-32 shrink-0">June 2025</span>
+                        <div>
+                            <h4 class="font-display text-2xl">AWS Academy</h4>
+                            <p class="text-text-secondary">Data Engineering Certification</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 group">
+                        <span class="text-text-secondary w-32 shrink-0">2021 - 2024</span>
+                        <div>
+                            <h4 class="font-display text-2xl">OZ Mühlizelg</h4>
+                            <p class="text-text-secondary">Secondary Education</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <footer id="contact" class="py-32 px-8 md:px-24 border-t border-white/5 bg-white text-black">
+            <div class="text-center md:text-left">
+                <span class="font-mono text-sm mb-4 block">(05) CONTACT</span>
+                <h2
+                    class="font-display text-6xl md:text-8xl font-bold tracking-tighter mb-12 hover:opacity-70 transition-opacity">
+                    <a href="mailto:kontakt@juliangraf.ch">LET'S TALK.</a>
+                </h2>
+                <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+                    <div class="flex gap-6 text-xl">
+                        <a href="#" class="hover:scale-125 transition-transform"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:scale-125 transition-transform"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="hover:scale-125 transition-transform"><i
+                                class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <p class="font-mono text-sm">&copy; 2025 Julian Graf</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Custom Pointer -->
+    <div id="cursor"
+        class="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[100] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
